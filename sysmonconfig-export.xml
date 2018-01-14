@@ -30,8 +30,8 @@
 		"LoginGuid" is randomly generated, assigned, and tracked by Sysmon to assist in tracing individual user sessions.
 -->
 
-<Sysmon schemaversion="3.30">
-	<HashAlgorithms>md5,sha256</HashAlgorithms>
+<Sysmon schemaversion="4.00">
+	<HashAlgorithms>*</HashAlgorithms>
 	<EventFiltering>
 
 	<!--SYSMON EVENT ID 1 : PROCESS CREATION-->
@@ -131,6 +131,13 @@
 			<ParentImage condition="end with">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\P7\adobe_licutil.exe</ParentImage> <!--Adobe:License utility-->
 			<Image condition="end with">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\UWA\updaterstartuputility.exe</Image>
 			<ParentImage condition="is">C:\Program Files (x86)\Common Files\Adobe\OOBE\PDApp\UWA\updaterstartuputility.exe</ParentImage>
+			<!---SECTION: Splunk-->
+			<Image condition="end with">C:\Program Files\SplunkUniversalForwarder\bin\splunk-winprintmon.exe</Image> <!--Splunk:Print Monitoring-->
+			<Image condition="end with">C:\Program Files\SplunkUniversalForwarder\bin\splunk-powershell.exe</Image> <!--Splunk:Powershell Monitoring-->
+			<Image condition="end with">C:\Program Files\SplunkUniversalForwarder\bin\splunk-admon.exe</Image> <!--Splunk:AD monitoring -->
+			<Image condition="end with">C:\Program Files\SplunkUniversalForwarder\bin\splunk-netmon.exe</Image> <!--Splunk:Network Monitoring-->
+			<Image condition="end with">C:\Program Files\SplunkUniversalForwarder\bin\splunk-regmon.exe</Image> <!--Splunk:Print Monitoring-->
+			<Image condition="end with">C:\Program Files\SplunkUniversalForwarder\bin\splunk-MonitorNoHandle.exe</Image> <!--Splunk:Handle Monitoring-->
 			<!--SECTION: Adobe:Creative Cloud-->
 			<Image condition="end with">C:\Program Files (x86)\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe</Image>
 			<ParentImage condition="end with">C:\Program Files (x86)\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe</ParentImage>
